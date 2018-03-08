@@ -7,9 +7,9 @@ import (
 
 	core "github.com/ipfs/go-ipfs/core"
 
+	swarmt "gx/ipfs/QmRqfgh56f8CrqpwH7D2s6t8zQRsvPoftT3sp5Y6SUhNA3/go-libp2p-swarm/testing"
 	bhost "gx/ipfs/QmWsV6kzPaYGBDVyuUfWBvyQygEc9Qrv9vzo8vZ7X4mdLN/go-libp2p/p2p/host/basic"
 	inet "gx/ipfs/QmXoz9o2PT3tEzf7hicegwex5UgVP54n3k82K7jrWFyN86/go-libp2p-net"
-	testutil "gx/ipfs/Qmb6BsZf6Y3kxffXMNTubGPF1w1bkHtpvhfYbmnwP3NQyw/go-libp2p-netutil"
 )
 
 // This test is based on go-libp2p/p2p/net/swarm.TestConnectednessCorrect
@@ -20,11 +20,11 @@ func TestPeersTotal(t *testing.T) {
 
 	hosts := make([]*bhost.BasicHost, 4)
 	for i := 0; i < 4; i++ {
-		hosts[i] = bhost.New(testutil.GenSwarmNetwork(t, ctx))
+		hosts[i] = bhost.New(swarmt.GenSwarm(t, ctx))
 	}
 
 	dial := func(a, b inet.Network) {
-		testutil.DivulgeAddresses(b, a)
+		swarmt.DivulgeAddresses(b, a)
 		if _, err := a.DialPeer(ctx, b.LocalPeer()); err != nil {
 			t.Fatalf("Failed to dial: %s", err)
 		}
