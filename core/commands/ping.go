@@ -182,9 +182,11 @@ func pingPeer(ctx context.Context, n *core.IpfsNode, pid peer.ID, numPings int) 
 }
 
 func ParsePeerParam(text string) (ma.Multiaddr, peer.ID, error) {
-	// to be replaced with just multiaddr parsing, once ptp is a multiaddr protocol
-	idx := strings.LastIndex(text, "/")
+	idx := strings.LastIndex(text, "/ipfs/")
 	if idx == -1 {
+		if strings.Contains(text, "/") {
+			return nil, "", errors.New("expected peer address to contain /ipfs/")
+		}
 		pid, err := peer.IDB58Decode(text)
 		if err != nil {
 			return nil, "", err
@@ -194,7 +196,7 @@ func ParsePeerParam(text string) (ma.Multiaddr, peer.ID, error) {
 	}
 
 	addrS := text[:idx]
-	peeridS := text[idx+1:]
+	peeridS := text[idx+len("/ipfs/"):]
 
 	var maddr ma.Multiaddr
 	var pid peer.ID
