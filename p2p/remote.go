@@ -5,7 +5,7 @@ import (
 
 	manet "gx/ipfs/QmRK2LxanhK2gZq6k6R7vk5ZoYZk8ULSSTB7FzDsMUX6CB/go-multiaddr-net"
 	ma "gx/ipfs/QmWWQ2Txc2c6tqjsBpzg5Ar652cHPGNsQQp2SejkNmkUMb/go-multiaddr"
-	net "gx/ipfs/QmXfkENeeBvh3zYA51MaSdGUdBjhQ99cP5WQe8zgr6wchG/go-libp2p-net"
+	net "gx/ipfs/QmXoz9o2PT3tEzf7hicegwex5UgVP54n3k82K7jrWFyN86/go-libp2p-net"
 	protocol "gx/ipfs/QmZNkThpqfVXs9GNbexPrfBbXSLNYeKrE7jwFM2oqHbyqN/go-libp2p-protocol"
 )
 
@@ -38,7 +38,7 @@ func (p2p *P2P) ForwardRemote(ctx context.Context, proto string, addr ma.Multiad
 			return
 		}
 
-		stream := Stream{
+		stream := &Stream{
 			Protocol: proto,
 
 			OriginAddr: remote.Conn().RemoteMultiaddr(),
@@ -50,7 +50,7 @@ func (p2p *P2P) ForwardRemote(ctx context.Context, proto string, addr ma.Multiad
 			Registry: p2p.Streams,
 		}
 
-		p2p.Streams.Register(&stream)
+		p2p.Streams.Register(stream)
 		stream.startStreaming()
 	})
 

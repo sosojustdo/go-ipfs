@@ -2,10 +2,11 @@ package p2p
 
 import (
 	"io"
+	"sync"
 
 	"gx/ipfs/QmRK2LxanhK2gZq6k6R7vk5ZoYZk8ULSSTB7FzDsMUX6CB/go-multiaddr-net"
 	ma "gx/ipfs/QmWWQ2Txc2c6tqjsBpzg5Ar652cHPGNsQQp2SejkNmkUMb/go-multiaddr"
-	"gx/ipfs/QmXfkENeeBvh3zYA51MaSdGUdBjhQ99cP5WQe8zgr6wchG/go-libp2p-net"
+	"gx/ipfs/QmXoz9o2PT3tEzf7hicegwex5UgVP54n3k82K7jrWFyN86/go-libp2p-net"
 )
 
 // Stream holds information on active incoming and outgoing p2p streams.
@@ -58,18 +59,25 @@ func (s *Stream) startStreaming() {
 // StreamRegistry is a collection of active incoming and outgoing proto app streams.
 type StreamRegistry struct {
 	Streams map[uint64]*Stream
+	lk      *sync.Mutex
 
 	nextId uint64
 }
 
 // Register registers a stream to the registry
-func (c *StreamRegistry) Register(streamInfo *Stream) {
-	streamInfo.Id = c.nextId
-	c.Streams[c.nextId] = streamInfo
-	c.nextId++
+func (r *StreamRegistry) Register(streamInfo *Stream) {
+	r.lk.Lock()
+	defer r.lk.Unlock()
+
+	streamInfo.Id = r.nextId
+	r.Streams[r.nextId] = streamInfo
+	r.nextId++
 }
 
 // Deregister deregisters stream from the registry
-func (c *StreamRegistry) Deregister(streamId uint64) {
-	delete(c.Streams, streamId)
+func (r *StreamRegistry) Deregister(streamId uint64) {
+	r.lk.Lock()
+	defer r.lk.Unlock()
+
+	delete(r.Streams, streamId)
 }
