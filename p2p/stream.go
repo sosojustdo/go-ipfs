@@ -7,13 +7,14 @@ import (
 	"gx/ipfs/QmRK2LxanhK2gZq6k6R7vk5ZoYZk8ULSSTB7FzDsMUX6CB/go-multiaddr-net"
 	ma "gx/ipfs/QmWWQ2Txc2c6tqjsBpzg5Ar652cHPGNsQQp2SejkNmkUMb/go-multiaddr"
 	"gx/ipfs/QmXoz9o2PT3tEzf7hicegwex5UgVP54n3k82K7jrWFyN86/go-libp2p-net"
+	"gx/ipfs/QmZNkThpqfVXs9GNbexPrfBbXSLNYeKrE7jwFM2oqHbyqN/go-libp2p-protocol"
 )
 
 // Stream holds information on active incoming and outgoing p2p streams.
 type Stream struct {
 	id uint64
 
-	Protocol string
+	Protocol protocol.ID
 
 	OriginAddr ma.Multiaddr
 	TargetAddr ma.Multiaddr
@@ -59,7 +60,7 @@ func (s *Stream) startStreaming() {
 // StreamRegistry is a collection of active incoming and outgoing proto app streams.
 type StreamRegistry struct {
 	Streams map[uint64]*Stream
-	lk      *sync.Mutex
+	lk      sync.Mutex
 
 	nextID uint64
 }
