@@ -57,18 +57,6 @@
       "version": "1.0.7"
     },
     {
-      "author": "satori",
-      "hash": "QmcBWojPoNh4qm7zvv4qiepvCnnc7ALS9qcp7TNwwxT1gT",
-      "name": "go.uuid",
-      "version": "1.1.0"
-    },
-    {
-      "author": "steakknife",
-      "hash": "QmeWQMDa5dSdP4n8WDeoY5z8L2EKVqF4ZvK4VEHsLqXsGu",
-      "name": "hamming",
-      "version": "0.0.10"
-    },
-    {
       "author": "cenk",
       "hash": "QmPJUtEJsm5YLUWhF6imvyCH8KZXRJa9Wup7FDMwTy5Ufz",
       "name": "backoff",
@@ -85,18 +73,6 @@
       "hash": "QmSH5XGpsBH1WB77pjHnFAsVnedQLZz7VGSLDgprob9bUh",
       "name": "pb",
       "version": "1.0.23"
-    },
-    {
-      "author": "jbenet",
-      "hash": "QmTKsRYeY4simJyf37K93juSq75Lo8MVCDJ7owjmf46u8W",
-      "name": "go-context",
-      "version": "1.0.0"
-    },
-    {
-      "author": "rs",
-      "hash": "QmPG2kW5t27LuHgHnvhUwbHCNHAt2eUcb4gPHqofrESUdB",
-      "name": "cors",
-      "version": "0.0.0"
     },
     {
       "author": "dustin",
@@ -129,12 +105,6 @@
       "version": "2.4.1"
     },
     {
-      "author": "codahale",
-      "hash": "QmV3NSS3A1kX5s28r7yLczhDsXzkgo65cqRgKFXYunWZmD",
-      "name": "metrics",
-      "version": "0.0.0"
-    },
-    {
       "author": "hashicorp",
       "hash": "QmVYxfoJQiZijTgPNHCHgHELvQpbsJNTg6Crmc3dQkj3yy",
       "name": "golang-lru",
@@ -151,12 +121,6 @@
       "hash": "QmfVj3x4D6Jkq9SEoi5n2NmoUomLwoeiwnYz2KQa15wRw6",
       "name": "base32",
       "version": "0.0.2"
-    },
-    {
-      "author": "kubuxu",
-      "hash": "QmXqKGu7QzfRzFC4yd5aL9sThYx22vY163VGwmxfp5qGHk",
-      "name": "bbloom",
-      "version": "0.1.1"
     },
     {
       "author": "jbenet",
@@ -473,18 +437,6 @@
       "hash": "QmPXvegq26x982cQjSfbTvSzZXn7GiaMwhhVPHkeTEhrPT",
       "name": "sys",
       "version": "0.1.0"
-    },
-    {
-      "author": "whyrusleeping",
-      "hash": "Qmc64U41EEB4nPG7wxjEqFwKJajS2f8kk5q2TvUrQf78Xu",
-      "name": "go-libp2p-blankhost",
-      "version": "0.2.7"
-    },
-    {
-      "author": "jbenet",
-      "hash": "QmWBug6eBS7AxRdCDVuSY5CnSit7cS2XnPFYJWqWDumhCG",
-      "name": "go-msgio",
-      "version": "0.0.3"
     },
     {
       "author": "mr-tron",
